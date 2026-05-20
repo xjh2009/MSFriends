@@ -56,6 +56,7 @@ tasks.register("collectJars") {
     description = "Copy all deployable mod jars into root out/"
     dependsOn(
         ":versions:26.1.2:fabric:jar",
+        ":versions:1.21.11:fabric:jar",
         ":versions:26.1.2:neoforge:relocateFatJar",
         ":versions:26.1.2:forge:relocateFatJar"
     )
@@ -70,10 +71,15 @@ tasks.register("collectJars") {
 
         outDir.asFile.mkdirs()
 
-        // Fabric
-        val fabricJar = project(":versions:26.1.2:fabric").tasks.named<Jar>("jar").get().archiveFile.get().asFile
-        val fabricName = "msfriends-fabric-${modVersion}+${mcVersion}.jar"
-        fabricJar.copyTo(File(outDir.asFile, fabricName), overwrite = true)
+        // Fabric 26.1.2
+        val fabricJar26 = project(":versions:26.1.2:fabric").tasks.named<Jar>("jar").get().archiveFile.get().asFile
+        val fabricName26 = "msfriends-fabric-${modVersion}+26.1.2.jar"
+        fabricJar26.copyTo(File(outDir.asFile, fabricName26), overwrite = true)
+
+        // Fabric 1.21.11
+        val fabricJar1211 = project(":versions:1.21.11:fabric").tasks.named<Jar>("jar").get().archiveFile.get().asFile
+        val fabricName1211 = "msfriends-fabric-${modVersion}+1.21.11.jar"
+        fabricJar1211.copyTo(File(outDir.asFile, fabricName1211), overwrite = true)
 
         // NeoForge
         val neoforgeAllJar = project(":versions:26.1.2:neoforge").layout.buildDirectory

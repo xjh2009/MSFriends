@@ -1,8 +1,10 @@
 [versions]
 java = "25"
 minecraft = "26.1"
+minecraft1211 = "1.21.11"
 fabric-loader = "0.19.2"
 fabric-api = "0.144.0+26.1"
+fabricapi1211 = "0.140.2+1.21.11"
 loom = "1.16.0-alpha.12"
 forge = "26.1.2-64.0.8"
 forge-mc = "26.1.2"
@@ -44,6 +46,8 @@ netty-handler = { group = "io.netty", name = "netty-handler", version.ref = "net
 junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
 minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+minecraft1211 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft1211" }
+fabricapi1211 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabricapi1211" }
 
 [plugins]
 fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "loom" }
