@@ -1,0 +1,95 @@
+# ========== 类型标签 (Type) ==========
+- name: bug
+  description: 游戏异常行为 / 非崩溃 Bug
+  color: d73a4a
+- name: crash
+  description: 游戏崩溃
+  color: b60205
+- name: enhancement
+  description: 新功能或改进建议
+  color: a2eeef
+- name: performance
+  description: 性能相关问题
+  color: 008672
+- name: question
+  description: 使用疑问 / 需要解答
+  color: d876e3
+
+# ========== 状态标签 (Status) ==========
+- name: status: needs-triage
+  description: 等待初步审查
+  color: fbca04
+- name: status: needs-info
+  description: 需要提交者提供更多信息
+  color: fbca04
+- name: status: confirmed
+  description: Bug 已确认
+  color: 0e8a16
+- name: status: in-progress
+  description: 正在处理中
+  color: 0052cc
+- name: status: fixed
+  description: 已在开发分支修复，等待发布
+  color: 0e8a16
+- name: status: cannot-reproduce
+  description: 无法复现
+  color: cfd3d7
+- name: status: wontfix
+  description: 不会解决/实现
+  color: ffffff
+- name: status: blocked
+  description: 被其他 Issue 或依赖阻塞
+  color: 5319e7
+
+# ========== 优先级标签 (Priority) ==========
+- name: priority: critical
+  description: 破坏性 Bug，需立即修复
+  color: b60205
+- name: priority: high
+  description: 重大影响，应尽快修复
+  color: d73a4a
+- name: priority: medium
+  description: 普通优先级
+  color: fbca04
+- name: priority: low
+  description: 小问题或优化项
+  color: cfd3d7
+
+# ========== 领域标签 (Area) ==========
+- name: area: networking
+  description: 网络连接 / P2P / WebRTC 相关问题
+  color: 1d76db
+- name: area: ui
+  description: 界面显示相关问题
+  color: 1d76db
+- name: area: api
+  description: API 相关
+  color: 1d76db
+- name: area: compatibility
+  description: 与其他 Mod 的兼容性问题
+  color: 1d76db
+
+# ========== 环境标签 (Environment) ==========
+- name: env: fabric
+  description: Fabric 加载器特定问题
+  color: bf4d28
+- name: env: forge
+  description: Forge 加载器特定问题
+  color: bf4d28
+- name: env: neoforge
+  description: NeoForge 加载器特定问题
+  color: bf4d28
+
+# ========== 元标签 (Meta) ==========
+- name: duplicate
+  description: 重复的 Issue
+  color: cfd3d7
+- name: invalid
+  description: 无效 / 不符合规范的 Issue
+  color: ffffff
+- name: good-first-issue
+  description: 适合新贡献者的任务
+  color: 7057ff
+- name: help-wanted
+  description: 需要社区协助
+  color: 008672
