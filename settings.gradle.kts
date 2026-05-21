@@ -28,3 +28,7 @@ include(":versions:26.1.2:common")
 include(":versions:26.1.2:fabric")
 include(":versions:26.1.2:neoforge")
 include(":versions:26.1.2:forge")
+
+// ---- MC 1.21.11 modules ----
+include(":versions:1.21.11:common")
+include(":versions:1.21.11:fabric")

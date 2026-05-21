@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.msf.friends.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ClientLoginMixin",
+    "ClientPacketListenerMixin",
+    "ConnectionAccessor",
+    "GuestConnectionMixin",
+    "IntegratedServerMixin",
+    "KeyBindingMixin",
+    "MinecraftTitleMixin",
+    "OptionsMixin",
+    "PauseScreenMixin",
+    "ServerLoginMixin",
+    "ShareToLanScreenMixin",
+    "TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

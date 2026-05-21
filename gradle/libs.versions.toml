@@ -1,8 +1,11 @@
 [versions]
 java = "25"
 minecraft = "26.1"
+minecraft12111 = "1.21.11"
 fabric-loader = "0.19.2"
 fabric-api = "0.144.0+26.1"
+fabricApi12111 = "0.141.4+1.21.11"
+yarn12111 = "1.21.11+build.5"
 loom = "1.16.0-alpha.12"
 forge = "26.1.2-64.0.8"
 forge-mc = "26.1.2"
@@ -25,6 +28,7 @@ junit = "5.11.0"
 [libraries]
 fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
 fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api" }
+fabricApi12111 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabricApi12111" }
 forge-sdk = { group = "net.minecraftforge", name = "forge", version.ref = "forge" }
 sponge-mixin = { group = "net.fabricmc", name = "sponge-mixin", version.ref = "sponge-mixin" }
 authlib = { group = "com.mojang", name = "authlib", version.ref = "authlib" }
@@ -44,8 +48,10 @@ netty-handler = { group = "io.netty", name = "netty-handler", version.ref = "net
 junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
 minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+mc12111 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft12111" }
 
 [plugins]
 fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "loom" }
+fabric-loom-remap = { id = "net.fabricmc.fabric-loom-remap", version.ref = "loom" }
 forge-gradle = { id = "net.minecraftforge.gradle", version.ref = "forge-grade" }
 moddev = { id = "net.neoforged.moddev", version.ref = "moddev-grade" }
