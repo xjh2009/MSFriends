@@ -1,0 +1,44 @@
+name: 功能建议
+description: 提出新功能或改进建议
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 提交建议前请确认
+        - 检查 [已有功能请求](https://github.com/xjh2009/MSFriends/labels/enhancement) 避免重复
+        - 请具体描述功能场景而非笼统地说"加个功能"
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 相关痛点
+      description: 这个功能解决了什么问题？
+      placeholder: 当我...的时候，体验不够好，因为...
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 期望的解决方案
+      description: 你希望看到什么样的功能？请尽量详细描述。
+      placeholder: 希望能添加...功能，可以在...位置找到，实现...效果
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 备选方案
+      description: 有没有考虑过其他替代方案？
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 截图、参考其他 Mod 的类似功能等
+    validations:
+      required: false

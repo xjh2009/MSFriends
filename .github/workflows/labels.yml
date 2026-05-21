@@ -1,0 +1,23 @@
+name: 同步 Issue 标签
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - ".github/labels.yml"
+  workflow_dispatch:
+
+jobs:
+  sync-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: micnncim/action-label-syncer@v1
+        with:
+          manifest: .github/labels.yml
+          token: ${{ github.token }}

@@ -1,0 +1,73 @@
+name: 性能问题
+description: 报告卡顿、帧率下降等性能问题
+labels: ["performance"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 提交性能问题前请确认
+        - 已尝试禁用 MSFriends 来确认是此 Mod 导致的性能问题
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 什么时候出现卡顿？帧率下降了多少？
+      placeholder: 打开好友列表时帧率从 60 掉到 20
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 如何复现此性能问题？
+    validations:
+      required: true
+
+  - type: input
+    id: spark
+    attributes:
+      label: Spark 分析链接（可选）
+      description: 如果有 Spark 性能分析结果，请粘贴链接
+      placeholder: https://spark.lucko.me/xxxxxx
+    validations:
+      required: false
+
+  - type: input
+    id: mc_version
+    attributes:
+      label: Minecraft 版本
+      description: 你使用的 Minecraft 版本
+      placeholder: 1.21.4
+    validations:
+      required: true
+
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Mod 加载器
+      description: 你使用的 Mod 加载器
+      multiple: true
+      options:
+        - NeoForge
+        - Forge
+        - Fabric
+    validations:
+      required: true
+
+  - type: input
+    id: mod_version
+    attributes:
+      label: MSFriends 版本
+      placeholder: 例如 26.1.2-1.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 其他 Mod 列表、分配内存等
+    validations:
+      required: false

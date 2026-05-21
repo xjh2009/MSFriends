@@ -1,0 +1,79 @@
+name: Bug 反馈
+description: 报告一个非崩溃的游戏问题
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 提交 Bug 前请确认
+        1. 已搜索 [已有 Issue](https://github.com/xjh2009/MSFriends/issues) 来确认是否已被报告
+        2. 已尝试禁用其他 Mod 来确认是否为 MSFriends 本身的问题
+        3. 已更新到 [最新版本](https://github.com/xjh2009/MSFriends/releases)
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 描述 Bug
+      description: 发生了什么？预期的行为是什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 如何复现此问题？
+      placeholder: |
+        1. 打开好友列表
+        2. 点击添加好友
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: mc_version
+    attributes:
+      label: Minecraft 版本
+      description: 你使用的 Minecraft 版本
+      placeholder: 1.21.4
+    validations:
+      required: true
+
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Mod 加载器
+      description: 你使用的 Mod 加载器
+      multiple: true
+      options:
+        - NeoForge
+        - Forge
+        - Fabric
+    validations:
+      required: true
+
+  - type: input
+    id: mod_version
+    attributes:
+      label: MSFriends 版本
+      description: 你使用的 MSFriends 版本号
+      placeholder: 例如 26.1.2-1.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志文件
+      description: 请将 latest.log 上传至 [mclo.gs](https://mclo.gs) 后将链接粘贴在此处
+      placeholder: https://mclo.gs/xxxxxx
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 截图、视频或其他有助于排查问题的信息
+    validations:
+      required: false

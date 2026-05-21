@@ -1,0 +1,75 @@
+name: 崩溃报告
+description: 报告游戏崩溃问题
+labels: ["crash"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 提交崩溃报告前请确认
+        - 已搜索 [已有 Issue](https://github.com/xjh2009/MSFriends/issues) 来确认是否已被报告
+        - 崩溃报告文件位于游戏目录下的 `crash-reports/` 文件夹中
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 崩溃描述
+      description: 崩溃前你在做什么？
+      placeholder: 我正尝试加入好友的世界，然后游戏崩溃了...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 如何复现此崩溃？
+    validations:
+      required: true
+
+  - type: input
+    id: crash_report
+    attributes:
+      label: 崩溃报告链接
+      description: 请将崩溃报告（.txt 文件）上传至 [mclo.gs](https://mclo.gs) 后将链接粘贴在此处。崩溃报告位于 `crash-reports/` 文件夹。
+      placeholder: https://mclo.gs/xxxxxx
+    validations:
+      required: true
+
+  - type: input
+    id: mc_version
+    attributes:
+      label: Minecraft 版本
+      description: 你使用的 Minecraft 版本
+      placeholder: 1.21.4
+    validations:
+      required: true
+
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Mod 加载器
+      description: 你使用的 Mod 加载器
+      multiple: true
+      options:
+        - NeoForge
+        - Forge
+        - Fabric
+    validations:
+      required: true
+
+  - type: input
+    id: mod_version
+    attributes:
+      label: MSFriends 版本
+      description: 你使用的 MSFriends 版本号
+      placeholder: 例如 26.1.2-1.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 截图、其他 Mod 列表等
+    validations:
+      required: false
