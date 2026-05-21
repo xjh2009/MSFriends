@@ -36,16 +36,49 @@ jobs:
           chmod +x gradlew
           ./gradlew build --no-daemon --console=plain 2>&1 | tee build.log
 
-      - name: Create issue on build failure
+      - name: Check retry count
+        id: check_retry
         if: failure()
         shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN || github.token }}
         run: |
+          BRANCH="${GITHUB_REF_NAME}"
+          LATEST=$(gh issue list --label "opencode" --state all --limit 100 \
+            --json title,body,createdAt 2>/dev/null | \
+            jq -c '[.[] | select(.title | startswith("Build failed on '"${BRANCH}"'"))] | sort_by(.createdAt) | last')
+
+          RETRY=0
+          if [[ -n "$LATEST" && "$LATEST" != "null" ]]; then
+            BODY=$(echo "$LATEST" | jq -r '.body // ""')
+            RETRY=$(echo "$BODY" | sed -n 's/.*\*\*retry:\*\* *\([0-9]*\).*/\1/p')
+            RETRY=${RETRY:-0}
+          fi
+
+          NEXT_RETRY=$((RETRY + 1))
+          echo "next_retry=${NEXT_RETRY}" >> "$GITHUB_OUTPUT"
+          if [ "$NEXT_RETRY" -gt 10 ]; then
+            echo "max_reached=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "max_reached=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create issue on build failure
+        if: failure() && steps.check_retry.outputs.max_reached == 'false'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN || github.token }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          RETRY=${{ steps.check_retry.outputs.next_retry }}
           {
             echo "## Build Failed"
             echo ""
             echo "**Branch:** \`${GITHUB_REF_NAME}\`"
             echo "**Commit:** ${GITHUB_SHA}"
             echo "**Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo ""
+            echo "**retry:** ${RETRY}"
             echo ""
             echo "<details open><summary>Build Log (last 100 lines)</summary>"
             echo ""
@@ -58,13 +91,8 @@ jobs:
             echo "/oc fix the build error on branch \`${GITHUB_REF_NAME}\`"
           } > issue_body.md
 
-          # Use PAT_TOKEN if available for full automation, fall back to GITHUB_TOKEN
           TOKEN="${PAT_TOKEN:-$GITHUB_TOKEN}"
-
           gh issue create \
             --title "Build failed on ${GITHUB_REF_NAME}" \
             --body-file issue_body.md \
             --label "bug,opencode"
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN || github.token }}
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
