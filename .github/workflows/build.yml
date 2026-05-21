@@ -1,0 +1,70 @@
+name: Auto Build
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 25 (Zulu)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'zulu'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build with Gradle
+        run: |
+          chmod +x gradlew
+          ./gradlew build --no-daemon --console=plain 2>&1 | tee build.log
+
+      - name: Create issue on build failure
+        if: failure()
+        shell: bash
+        run: |
+          {
+            echo "## Build Failed"
+            echo ""
+            echo "**Branch:** \`${GITHUB_REF_NAME}\`"
+            echo "**Commit:** ${GITHUB_SHA}"
+            echo "**Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo ""
+            echo "<details open><summary>Build Log (last 100 lines)</summary>"
+            echo ""
+            echo '```'
+            tail -100 build.log
+            echo '```'
+            echo ""
+            echo "</details>"
+            echo ""
+            echo "/oc fix the build error on branch \`${GITHUB_REF_NAME}\`"
+          } > issue_body.md
+
+          # Use PAT_TOKEN if available for full automation, fall back to GITHUB_TOKEN
+          TOKEN="${PAT_TOKEN:-$GITHUB_TOKEN}"
+
+          gh issue create \
+            --title "Build failed on ${GITHUB_REF_NAME}" \
+            --body-file issue_body.md \
+            --label "bug,opencode"
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN || github.token }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

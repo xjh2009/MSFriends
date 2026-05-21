@@ -81,6 +81,9 @@
   color: bf4d28
 
 # ========== 元标签 (Meta) ==========
+- name: opencode
+  description: AI 自动构建/修复相关 Issue
+  color: 5319e7
 - name: duplicate
   description: 重复的 Issue
   color: cfd3d7
