@@ -95,17 +95,23 @@ public record SignalingMessage(Type type, String sessionId,
     }
 
     private static SignalingMessage from(Payload payload) {
-        return switch (payload) {
-            case FriendJoin.Request   r -> new SignalingMessage(Type.JOIN_REQUEST,  r.sessionId(), null, null, r.profileId());
-            case FriendJoin.Accepted  a -> new SignalingMessage(Type.JOIN_ACCEPTED, a.sessionId(), null, null, null);
-            case FriendJoin.Rejected  r -> new SignalingMessage(Type.JOIN_REJECTED, r.sessionId(), null, null, null);
-            case FriendJoin.InviteDeclined ignored ->
-                new SignalingMessage(Type.INVITE_DECLINED, UUID.randomUUID().toString(), null, null, null);
-            case WebRtc.Offer  o -> new SignalingMessage(Type.OFFER,  o.sessionId(), o.sdp(), null, null);
-            case WebRtc.Answer a -> new SignalingMessage(Type.ANSWER, a.sessionId(), a.sdp(), null, null);
-            case WebRtc.IceCandidate ic ->
-                new SignalingMessage(Type.ICE_CANDIDATE, ic.sessionId(), null, ic.candidate(), null);
-        };
+        if (payload instanceof FriendJoin.Request r) {
+            return new SignalingMessage(Type.JOIN_REQUEST, r.sessionId(), null, null, r.profileId());
+        } else if (payload instanceof FriendJoin.Accepted a) {
+            return new SignalingMessage(Type.JOIN_ACCEPTED, a.sessionId(), null, null, null);
+        } else if (payload instanceof FriendJoin.Rejected r) {
+            return new SignalingMessage(Type.JOIN_REJECTED, r.sessionId(), null, null, null);
+        } else if (payload instanceof FriendJoin.InviteDeclined) {
+            return new SignalingMessage(Type.INVITE_DECLINED, UUID.randomUUID().toString(), null, null, null);
+        } else if (payload instanceof WebRtc.Offer o) {
+            return new SignalingMessage(Type.OFFER, o.sessionId(), o.sdp(), null, null);
+        } else if (payload instanceof WebRtc.Answer a) {
+            return new SignalingMessage(Type.ANSWER, a.sessionId(), a.sdp(), null, null);
+        } else if (payload instanceof WebRtc.IceCandidate ic) {
+            return new SignalingMessage(Type.ICE_CANDIDATE, ic.sessionId(), null, ic.candidate(), null);
+        } else {
+            throw new IllegalArgumentException("Unknown payload: " + payload);
+        }
     }
 
     /**

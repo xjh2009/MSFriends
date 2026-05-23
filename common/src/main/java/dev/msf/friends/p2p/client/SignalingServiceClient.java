@@ -239,7 +239,7 @@ public final class SignalingServiceClient {
         pendingTurnRefresh = null;
         connectFuture.whenComplete((rpc, t) -> {
             CompletableFuture<?> rpcClosed = rpc != null ? rpc.close() : CompletableFuture.completedFuture(null);
-            rpcClosed.whenComplete((u, tt) -> CompletableFuture.runAsync(client::close));
+            rpcClosed.whenComplete((u, tt) -> CompletableFuture.runAsync(() -> { /* HttpClient.close() not available in Java 17 */ }));
         });
         connectFuture.completeExceptionally(new IllegalStateException("Signaling torn down: " + reason));
         this.httpClient = null;
@@ -357,9 +357,10 @@ public final class SignalingServiceClient {
             LOGGER.debug("Ignoring malformed signaling message of type {}", parsed.type());
             return;
         }
-        switch (p) {
-            case SignalingMessage.FriendJoin fj -> dispatchFriendJoinMessage(fromPmid, fj);
-            case SignalingMessage.WebRtc wr     -> dispatchWebRtcMessage(fromPmid, wr);
+        if (p instanceof SignalingMessage.FriendJoin fj) {
+            dispatchFriendJoinMessage(fromPmid, fj);
+        } else if (p instanceof SignalingMessage.WebRtc wr) {
+            dispatchWebRtcMessage(fromPmid, wr);
         }
     }
 
@@ -430,7 +431,7 @@ public final class SignalingServiceClient {
         }
 
         RTCIceServer toRtcIceServer() {
-            TurnAuthServer first = turnAuthServers.getFirst();
+            TurnAuthServer first = turnAuthServers.get(0);
             RTCIceServer ice = new RTCIceServer();
             ice.username = first.username;
             ice.password = first.password;

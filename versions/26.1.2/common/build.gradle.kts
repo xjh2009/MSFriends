@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.fabric.loom)
+    alias(libs.plugins.fabric.loom.noremap)
 }
 
 description = "MSF 26.1.2 adapter — version-specific code, loader-agnostic"
@@ -10,6 +10,8 @@ dependencies {
 
     // Minecraft — auto-downloaded by Loom
     "minecraft"(libs.minecraft)
+
+    // MC 26.1 is fully unobfuscated — no mappings needed with no-remap Loom
 
     // Fabric mixin infrastructure (compile-only)
     compileOnlyApi(libs.fabric.loader)

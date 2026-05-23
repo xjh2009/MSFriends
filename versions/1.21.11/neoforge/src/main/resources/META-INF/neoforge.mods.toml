@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MPL-2.0"
+
+[[mods]]
+modId="msf_friends"
+version="${version}"
+displayName="Minecraft Service Friends (MSF)"
+logoFile=""
+credits="MSF"
+authors="MSF"
+description='''
+Minecraft Service Friends (MSF) — Friends + WebRTC P2P multiplayer.
+
+This mod provides the Minecraft friends system and WebRTC peer-to-peer multiplayer,
+allowing players to connect with friends and join games directly without a dedicated server.
+
+Features:
+- Friends list integration with Mojang accounts
+- WebRTC-based P2P multiplayer connections
+- Direct friend-to-friend game joining
+- Presence sharing and online status
+- Toast notifications for friend events
+'''
+
+[[dependencies.msf_friends]]
+modId="neoforge"
+type="required"
+versionRange="[21.11.0-beta,21.12)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.msf_friends]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.11,1.21.12)"
+ordering="NONE"
+side="CLIENT"
+
+[[mixins]]
+config="msf-friends.mixins.json"

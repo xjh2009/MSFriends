@@ -197,11 +197,14 @@ public final class FriendJoinHandler {
     // -------- inbound dispatch --------
 
     private void handle(UUID fromPmid, SignalingMessage.FriendJoin msg) {
-        switch (msg) {
-            case SignalingMessage.FriendJoin.Request   r -> handleJoinRequest(fromPmid, r);
-            case SignalingMessage.FriendJoin.Accepted  a -> handleJoinAccepted(fromPmid, a.sessionId());
-            case SignalingMessage.FriendJoin.Rejected  r -> handleJoinRejected(fromPmid, r.sessionId());
-            case SignalingMessage.FriendJoin.InviteDeclined ignored -> handleInviteDeclined(fromPmid);
+        if (msg instanceof SignalingMessage.FriendJoin.Request r) {
+            handleJoinRequest(fromPmid, r);
+        } else if (msg instanceof SignalingMessage.FriendJoin.Accepted a) {
+            handleJoinAccepted(fromPmid, a.sessionId());
+        } else if (msg instanceof SignalingMessage.FriendJoin.Rejected r) {
+            handleJoinRejected(fromPmid, r.sessionId());
+        } else if (msg instanceof SignalingMessage.FriendJoin.InviteDeclined) {
+            handleInviteDeclined(fromPmid);
         }
     }
 

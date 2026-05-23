@@ -1,13 +1,39 @@
 [versions]
 java = "25"
 minecraft = "26.1"
+minecraft1_21_11 = "1.21.11"
+minecraft1_21_1 = "1.21.1"
+minecraft1_20_1 = "1.20.1"
+minecraft1_19_2 = "1.19.2"
+minecraft1_18_2 = "1.18.2"
+minecraft1_16_5 = "1.16.5"
+yarn12111 = "1.21.11+build.5"
+yarn1211 = "1.21.1+build.1"
+yarn1201 = "1.20.1+build.10"
+yarn1192 = "1.19.2+build.28"
+yarn1182 = "1.18.2+build.4"
+yarn1165 = "1.16.5+build.10"
 fabric-loader = "0.19.2"
+fabric-loader1_21_1 = "0.16.10"
+fabric-loader1_20_1 = "0.15.11"
+fabric-loader1_19_2 = "0.14.21"
+fabric-loader1_18_2 = "0.14.22"
+fabric-loader1_16_5 = "0.14.21"
 fabric-api = "0.144.0+26.1"
+fabric-api1_21_11 = "0.141.4+1.21.11"
+fabric-api1_21_1 = "0.116.12+1.21.1"
+fabric-api1_20_1 = "0.92.2+1.20.1"
+fabric-api1_19_2 = "0.77.0+1.19.2"
+fabric-api1_18_2 = "0.76.0+1.18.2"
+fabric-api1_16_5 = "0.42.0+1.16"
 loom = "1.16.0-alpha.12"
 forge = "26.1.2-64.0.8"
 forge-mc = "26.1.2"
 forge-grade = "[7.0.17,8)"
+forge1_21_11 = "1.21.11-61.1.0"
+forge-mc1_21_11 = "1.21.11"
 neoforge = "26.1.2.59-beta"
+neoforge12111 = "21.11.42"
 moddev-grade = "2.0.141"
 sponge-mixin = "0.17.2+mixin.0.8.7"
 authlib = "7.0.63"
@@ -25,7 +51,19 @@ junit = "5.11.0"
 [libraries]
 fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
 fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api" }
+fabric-api12111 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api1_21_11" }
+fabric-api1211 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api1_21_1" }
+fabric-api1201 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api1_20_1" }
+fabric-api1192 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api1_19_2" }
+fabric-api1182 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api1_18_2" }
+fabric-api1165 = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api1_16_5" }
+fabric-loader1211 = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader1_21_1" }
+fabric-loader1201 = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader1_20_1" }
+fabric-loader1192 = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader1_19_2" }
+fabric-loader1182 = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader1_18_2" }
+fabric-loader1165 = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader1_16_5" }
 forge-sdk = { group = "net.minecraftforge", name = "forge", version.ref = "forge" }
+forge-sdk1_21_11 = { group = "net.minecraftforge", name = "forge", version.ref = "forge1_21_11" }
 sponge-mixin = { group = "net.fabricmc", name = "sponge-mixin", version.ref = "sponge-mixin" }
 authlib = { group = "com.mojang", name = "authlib", version.ref = "authlib" }
 webrtc-java = { group = "dev.onvoid.webrtc", name = "webrtc-java", version.ref = "webrtc-java" }
@@ -44,8 +82,21 @@ netty-handler = { group = "io.netty", name = "netty-handler", version.ref = "net
 junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
 minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+minecraft12111 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft1_21_11" }
+minecraft1211 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft1_21_1" }
+minecraft1201 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft1_20_1" }
+minecraft1192 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft1_19_2" }
+minecraft1182 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft1_18_2" }
+minecraft1165 = { group = "com.mojang", name = "minecraft", version.ref = "minecraft1_16_5" }
+yarn12111 = { group = "net.fabricmc", name = "yarn", version.ref = "yarn12111" }
+yarn1211 = { group = "net.fabricmc", name = "yarn", version.ref = "yarn1211" }
+yarn1201 = { group = "net.fabricmc", name = "yarn", version.ref = "yarn1201" }
+yarn1192 = { group = "net.fabricmc", name = "yarn", version.ref = "yarn1192" }
+yarn1182 = { group = "net.fabricmc", name = "yarn", version.ref = "yarn1182" }
+yarn1165 = { group = "net.fabricmc", name = "yarn", version.ref = "yarn1165" }
 
 [plugins]
-fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "loom" }
+fabric-loom = { id = "fabric-loom", version.ref = "loom" }
+fabric-loom-noremap = { id = "net.fabricmc.fabric-loom", version.ref = "loom" }
 forge-gradle = { id = "net.minecraftforge.gradle", version.ref = "forge-grade" }
 moddev = { id = "net.neoforged.moddev", version.ref = "moddev-grade" }

@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.fabric.loom)
+    alias(libs.plugins.fabric.loom.noremap)
 }
 
 description = "MSF Fabric 26.1.2 entry point"
@@ -8,6 +8,8 @@ dependencies {
     implementation(project(":versions:26.1.2:common"))
 
     "minecraft"(libs.minecraft)
+
+    // MC 26.1 is fully unobfuscated — no mappings needed with no-remap Loom
 
     implementation(libs.fabric.loader)
     implementation(libs.fabric.api)

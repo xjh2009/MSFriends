@@ -119,10 +119,12 @@ final class RtcHandshakeHandler {
     // -------- inbound dispatch --------
 
     private void handleWebRtc(UUID fromPmid, SignalingMessage.WebRtc msg) {
-        switch (msg) {
-            case SignalingMessage.WebRtc.Offer  o -> handleOffer(fromPmid, o);
-            case SignalingMessage.WebRtc.Answer a -> handleAnswer(fromPmid, a);
-            case SignalingMessage.WebRtc.IceCandidate ic -> handleIceCandidate(fromPmid, ic);
+        if (msg instanceof SignalingMessage.WebRtc.Offer o) {
+            handleOffer(fromPmid, o);
+        } else if (msg instanceof SignalingMessage.WebRtc.Answer a) {
+            handleAnswer(fromPmid, a);
+        } else if (msg instanceof SignalingMessage.WebRtc.IceCandidate ic) {
+            handleIceCandidate(fromPmid, ic);
         }
     }
 

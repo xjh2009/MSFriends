@@ -61,11 +61,24 @@ public class YggdrasilFriendsService implements FriendsService {
     private final AtomicBoolean requestPending = new AtomicBoolean(false);
 
     public YggdrasilFriendsService(String accessToken, Proxy proxy, Environment environment) {
+        this(accessToken, proxy,
+                environment.servicesHost() + "/friends",
+                environment.servicesHost() + "/player/attributes",
+                environment.servicesHost() + "/presence");
+    }
+
+    /**
+     * Constructor that accepts pre-resolved route URLs, avoiding
+     * a direct dependency on the {@link Environment} type (which
+     * changes from class to interface between authlib 3.x and 7.x).
+     */
+    public YggdrasilFriendsService(String accessToken, Proxy proxy,
+            String routeFriends, String routePrivileges, String routePresence) {
         this.accessToken = accessToken;
         this.proxy = proxy;
-        this.routeFriends    = environment.servicesHost() + "/friends";
-        this.routePrivileges = environment.servicesHost() + "/player/attributes";
-        this.routePresence   = environment.servicesHost() + "/presence";
+        this.routeFriends    = routeFriends;
+        this.routePrivileges = routePrivileges;
+        this.routePresence   = routePresence;
     }
 
     // -------------------------------------------------------------------------

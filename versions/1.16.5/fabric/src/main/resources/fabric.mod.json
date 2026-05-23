@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "msf_friends",
+  "version": "${version}",
+  "name": "Minecraft Service Friends (MSF)",
+  "description": "Minecraft Service Friends — Friends + WebRTC P2P multiplayer.",
+  "authors": ["MSF"],
+  "license": "MPL-2.0",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["dev.msf.friends.MsfFriendsClient"]
+  },
+  "mixins": ["msf-friends.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.12.0",
+    "minecraft": "~1.16.5",
+    "java": ">=17",
+    "fabric": "*"
+  }
+}
