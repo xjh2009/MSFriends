@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -45,6 +47,8 @@ public final class ConnectionBridge {
         Class<?> helloPacketClass = FabricReflect.mcClass("net.minecraft.network.protocol.login.ServerboundHelloPacket");
         Class<?> packetClass = FabricReflect.mcClass("net.minecraft.network.protocol.Packet");
         Class<?> levelLoadTrackerClass = FabricReflect.mcClass("net.minecraft.client.multiplayer.LevelLoadTracker");
+        Class<?> transferStateClass = FabricReflect.mcClass("net.minecraft.client.multiplayer.TransferState");
+        Class<?> screenClass = FabricReflect.mcClass("net.minecraft.client.gui.screens.Screen");
         Class<?> debugOverlayClass = FabricReflect.mcClass("net.minecraft.client.gui.components.DebugScreenOverlay");
         Class<?> clientLoginListenerClass = FabricReflect.mcClass("net.minecraft.network.protocol.login.ClientLoginPacketListener");
         Class<?> packetListenerClass = FabricReflect.mcClass("net.minecraft.network.PacketListener");
@@ -85,13 +89,34 @@ public final class ConnectionBridge {
         Object serverData = serverDataCtor.newInstance("Online", "rtc-peer", serverDataTypeLAN);
         Object levelLoadTracker = levelLoadTrackerClass.getConstructor().newInstance();
 
+        // Create an empty TransferState / CookieStorage instance instead of null.
+        // In 1.21.11, ClientHandshakePacketListenerImpl's 9-arg constructor adds a
+        // @Nullable CookieStorage parameter; passing null can cause NPE when the login
+        // handler tries to access cookieStorage.cookies() or cookieStorage.seenPlayers()
+        // during the handshake flow.
+        Constructor<?> transferStateCtor = transferStateClass.getConstructor(Map.class, Map.class, boolean.class);
+        Object emptyTransferState = transferStateCtor.newInstance(Map.of(), Map.of(), false);
+
         // No-op status consumer (lambda var0 -> {} equivalent via proxy)
         Object noOpConsumer = java.lang.reflect.Proxy.newProxyInstance(
                 java.util.function.Consumer.class.getClassLoader(),
                 new Class<?>[]{ java.util.function.Consumer.class },
                 (proxy, method, args) -> null);
 
-        Constructor<?> handshakeCtor = clientHandshakeClass.getConstructors()[0];
+        // Use explicit constructor lookup instead of getConstructors()[0].
+        // class_635 (ClientLoginNetworkHandler / ClientHandshakePacketListenerImpl) has
+        // multiple public constructors in 1.21.11; getConstructors()[0] order is undefined
+        // and may return the wrong constructor.
+        Constructor<?> handshakeCtor = clientHandshakeClass.getDeclaredConstructor(
+                connectionClass, minecraftClass, serverDataClass,
+                screenClass,              // parent Screen
+                boolean.class,            // newWorld
+                java.time.Duration.class, // worldLoadTime
+                java.util.function.Consumer.class, // statusListener
+                levelLoadTrackerClass,    // levelLoadProgressListener
+                transferStateClass        // cookieStorage / TransferState
+        );
+        handshakeCtor.setAccessible(true);
         Constructor<?> helloCtor = helloPacketClass.getConstructor(String.class, UUID.class);
 
         Field pendingField = FabricReflect.mcField(minecraftClass, "pendingConnection");
@@ -122,12 +147,12 @@ public final class ConnectionBridge {
                 // Create login listener
                 Object handshakeListener = handshakeCtor.newInstance(
                         connection, fMinecraft, serverData,
-                        null,           // parent screen
-                        false,          // is transfer
-                        null,           // timeout Duration
-                        noOpConsumer,   // status consumer
+                        null,              // parent screen
+                        false,             // newWorld
+                        null,              // worldLoadTime Duration
+                        noOpConsumer,      // statusListener consumer
                         levelLoadTracker,
-                        null            // TransferState
+                        emptyTransferState  // CookieStorage / TransferState
                 );
 
                 // initiateServerboundPlayConnection — registers runOnceConnected callback.

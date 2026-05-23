@@ -94,16 +94,16 @@ tasks.register("collectJars") {
     description = "Copy all deployable mod jars into root out/"
     dependsOn(
         ":versions:1.21.11:fabric:remapJar",
-        ":versions:1.21.11:forge:relocateFatJar",
-        ":versions:1.21.11:neoforge:relocateFatJar",
+        //":versions:1.21.11:forge:relocateFatJar",
+        //":versions:1.21.11:neoforge:relocateFatJar",
         ":versions:1.21.1:fabric:remapJar",
         ":versions:1.20.1:fabric:remapJar",
         ":versions:1.19.2:fabric:remapJar",
         ":versions:1.18.2:fabric:remapJar",
         ":versions:1.16.5:fabric:remapJar",
-        ":versions:26.1.2:fabric:jar",
-        ":versions:26.1.2:neoforge:relocateFatJar",
-        ":versions:26.1.2:forge:relocateFatJar"
+        ":versions:26.1.2:fabric:jar"
+        //":versions:26.1.2:neoforge:relocateFatJar",
+        //":versions:26.1.2:forge:relocateFatJar"
     )
 
     // Always execute this task — never skip due to UP-TO-DATE checks.
@@ -125,19 +125,19 @@ tasks.register("collectJars") {
         val fabric12111Name = "msfriends-fabric-${modVersion}+1.21.11.jar"
         fabric12111Jar.copyTo(File(outDir.asFile, fabric12111Name), overwrite = true)
 
-        // Forge 1.21.11 (relocated fat jar)
-        val forge12111ArchivesName = project(":versions:1.21.11:forge").path.removePrefix(":").replace(":", "-")
-        val forge12111AllJar = project(":versions:1.21.11:forge").layout.buildDirectory
-            .file("libs/${forge12111ArchivesName}-${project.version}-all.jar").get().asFile
-        val forge12111Name = "msfriends-forge-${modVersion}+1.21.11.jar"
-        forge12111AllJar.copyTo(File(outDir.asFile, forge12111Name), overwrite = true)
+        // Forge 1.21.11 — skipped (project not included)
+        // val forge12111ArchivesName = project(":versions:1.21.11:forge").path.removePrefix(":").replace(":", "-")
+        // val forge12111AllJar = project(":versions:1.21.11:forge").layout.buildDirectory
+        //     .file("libs/${forge12111ArchivesName}-${project.version}-all.jar").get().asFile
+        // val forge12111Name = "msfriends-forge-${modVersion}+1.21.11.jar"
+        // forge12111AllJar.copyTo(File(outDir.asFile, forge12111Name), overwrite = true)
 
-        // NeoForge 1.21.11 (relocated fat jar)
-        val neoforge12111ArchivesName = project(":versions:1.21.11:neoforge").path.removePrefix(":").replace(":", "-")
-        val neoforge12111AllJar = project(":versions:1.21.11:neoforge").layout.buildDirectory
-            .file("libs/${neoforge12111ArchivesName}-${project.version}-all.jar").get().asFile
-        val neoforge12111Name = "msfriends-neoforge-${modVersion}+1.21.11.jar"
-        neoforge12111AllJar.copyTo(File(outDir.asFile, neoforge12111Name), overwrite = true)
+        // NeoForge 1.21.11 — skipped (project not included)
+        // val neoforge12111ArchivesName = project(":versions:1.21.11:neoforge").path.removePrefix(":").replace(":", "-")
+        // val neoforge12111AllJar = project(":versions:1.21.11:neoforge").layout.buildDirectory
+        //     .file("libs/${neoforge12111ArchivesName}-${project.version}-all.jar").get().asFile
+        // val neoforge12111Name = "msfriends-neoforge-${modVersion}+1.21.11.jar"
+        // neoforge12111AllJar.copyTo(File(outDir.asFile, neoforge12111Name), overwrite = true)
 
         // Fabric 1.21.1
         val fabric1211Jar = project(":versions:1.21.1:fabric").tasks.named<AbstractArchiveTask>("remapJar").get().archiveFile.get().asFile
@@ -169,19 +169,19 @@ tasks.register("collectJars") {
         val fabricName = "msfriends-fabric-${modVersion}+${mcVersion}.jar"
         fabricJar.copyTo(File(outDir.asFile, fabricName), overwrite = true)
 
-        // NeoForge 26.1.2
-        val neoforge2612ArchivesName = project(":versions:26.1.2:neoforge").path.removePrefix(":").replace(":", "-")
-        val neoforgeAllJar = project(":versions:26.1.2:neoforge").layout.buildDirectory
-            .file("libs/${neoforge2612ArchivesName}-${project.version}-all.jar").get().asFile
-        val neoforgeName = "msfriends-neoforge-${modVersion}+${mcVersion}.jar"
-        neoforgeAllJar.copyTo(File(outDir.asFile, neoforgeName), overwrite = true)
+        // NeoForge 26.1.2 — skipped (project not included)
+        // val neoforge2612ArchivesName = project(":versions:26.1.2:neoforge").path.removePrefix(":").replace(":", "-")
+        // val neoforgeAllJar = project(":versions:26.1.2:neoforge").layout.buildDirectory
+        //     .file("libs/${neoforge2612ArchivesName}-${project.version}-all.jar").get().asFile
+        // val neoforgeName = "msfriends-neoforge-${modVersion}+${mcVersion}.jar"
+        // neoforgeAllJar.copyTo(File(outDir.asFile, neoforgeName), overwrite = true)
 
-        // Forge 26.1.2
-        val forge2612ArchivesName = project(":versions:26.1.2:forge").path.removePrefix(":").replace(":", "-")
-        val forgeAllJar = project(":versions:26.1.2:forge").layout.buildDirectory
-            .file("libs/${forge2612ArchivesName}-${project.version}-all.jar").get().asFile
-        val forgeName = "msfriends-forge-${modVersion}+${mcVersion}.jar"
-        forgeAllJar.copyTo(File(outDir.asFile, forgeName), overwrite = true)
+        // Forge 26.1.2 — skipped (project not included)
+        // val forge2612ArchivesName = project(":versions:26.1.2:forge").path.removePrefix(":").replace(":", "-")
+        // val forgeAllJar = project(":versions:26.1.2:forge").layout.buildDirectory
+        //     .file("libs/${forge2612ArchivesName}-${project.version}-all.jar").get().asFile
+        // val forgeName = "msfriends-forge-${modVersion}+${mcVersion}.jar"
+        // forgeAllJar.copyTo(File(outDir.asFile, forgeName), overwrite = true)
 
         logger.lifecycle("Collected jars to out/:")
         outDir.asFile.listFiles()?.filter { it.name.endsWith(".jar") }?.forEach {

@@ -33,6 +33,7 @@ public final class FabricReflect {
             Map.entry("net.minecraft.client.multiplayer.ServerData",                   "net.minecraft.class_642"),
             Map.entry("net.minecraft.client.multiplayer.ServerData$Type",             "net.minecraft.class_642$class_8678"),
             Map.entry("net.minecraft.client.multiplayer.LevelLoadTracker",            "net.minecraft.class_11653"),
+            Map.entry("net.minecraft.client.multiplayer.TransferState",              "net.minecraft.class_9112"),
             // network
             Map.entry("net.minecraft.network.Connection",                             "net.minecraft.class_2535"),
             Map.entry("net.minecraft.network.protocol.PacketFlow",                    "net.minecraft.class_2598"),
