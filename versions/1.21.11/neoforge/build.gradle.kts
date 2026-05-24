@@ -145,7 +145,8 @@ tasks.register("relocateFatJar") {
 
         // === Strip Fabric refmap and fix mixin config for NeoForge ===
         // Same as Forge — the common module may still have a remnant refmap.
-        val refmapFile = File(unpacked, "msf-friends-refmap.json")
+        // The refmap filename matches the "refmap" key in msf-friends.mixins.json.
+        val refmapFile = File(unpacked, "versions-1.21.11-common-refmap.json")
         val mixinJsonFile = File(unpacked, "msf-friends.mixins.json")
 
         // --- Build intermediary → named (Mojang) remapping table from tiny mappings ---
@@ -157,12 +158,13 @@ tasks.register("relocateFatJar") {
         // 1) Parse the Fabric Loom tiny mapping file (intermediary → named → official)
         //    to build class-name and method/field mappings.
         //    Note: method/field lines in tiny v2 have a leading tab; we trimStart() before parsing.
-        val tinyDir = File(
-            project.gradle.gradleUserHomeDir,
-            "caches/fabric-loom/1.21.11/loom.mappings.1_21_11.layered+hash.2198-v2"
-        )
-        val tinyFile = File(tinyDir, "mappings-base.tiny")
-        if (tinyFile.exists()) {
+        val loomCacheDir = File(project.gradle.gradleUserHomeDir, "caches/fabric-loom/1.21.11")
+        val layeredDir = loomCacheDir.listFiles()
+            ?.filter { it.name.startsWith("loom.mappings.1_21_11.layered") }
+            ?.maxByOrNull { it.name }
+        val tinyFile = if (layeredDir != null) File(layeredDir, "mappings-base.tiny") else null
+        if (tinyFile != null && tinyFile.exists()) {
+            logger.lifecycle("Using layered mapping file: $tinyFile")
             val methodByIntermediaryAndDesc = mutableMapOf<String, String>()  // "desc|intermediary" -> named
             val fieldByIntermediaryAndOwner = mutableMapOf<String, String>()  // "owner|intermediary" -> named
 

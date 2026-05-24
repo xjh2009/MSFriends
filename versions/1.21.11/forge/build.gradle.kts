@@ -150,7 +150,8 @@ tasks.register("relocateFatJar") {
         //      (class names for all .class files; method/field names for mixin .class only)
         //   3. Deleting the Fabric refmap and removing the "refmap" key from mixin JSON
 
-        val refmapFile = File(unpacked, "msf-friends-refmap.json")
+        // The refmap filename matches the "refmap" key in msf-friends.mixins.json.
+        val refmapFile = File(unpacked, "versions-1.21.11-common-refmap.json")
         val mixinJsonFile = File(unpacked, "msf-friends.mixins.json")
 
         logger.lifecycle("Looking for refmap at: ${refmapFile.absolutePath}  exists=${refmapFile.exists()}")
