@@ -34,7 +34,7 @@ jobs:
       - name: Build with Gradle
         run: |
           chmod +x gradlew
-          ./gradlew build --no-daemon --console=plain -Dorg.gradle.java.home=$JAVA_HOME 2>&1 | tee build.log
+          ./gradlew build --no-daemon --console=plain 2>&1 | tee build.log
 
       - name: Check retry count
         id: check_retry
