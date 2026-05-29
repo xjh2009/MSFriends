@@ -1,0 +1,87 @@
+=== versions-1.20.1-common-refmap.json ===
+{
+  "mappings": {
+    "dev/msf/friends/mixin/TitleScreenMixin": {
+      "init": "Lnet/minecraft/client/gui/screens/TitleScreen;m_7856_()V"
+    },
+    "dev/msf/friends/mixin/ClientPacketListenerMixin": {
+      "onGameJoin": "Lnet/minecraft/client/multiplayer/ClientPacketListener;m_5998_(Lnet/minecraft/network/protocol/game/ClientboundLoginPacket;)V"
+    },
+    "dev/msf/friends/mixin/MinecraftTitleMixin": {
+      "getWindowTitle": "Lnet/minecraft/client/Minecraft;m_91270_()Ljava/lang/String;"
+    },
+    "dev/msf/friends/mixin/ConnectionAccessor": {
+      "channel": "f_129468_:Lio/netty/channel/Channel;"
+    },
+    "dev/msf/friends/mixin/ServerLoginMixin": {
+      "Lnet/minecraft/network/ClientConnection;setupEncryption(Ljavax/crypto/Cipher;Ljavax/crypto/Cipher;)V": "Lnet/minecraft/network/Connection;m_129495_(Ljavax/crypto/Cipher;Ljavax/crypto/Cipher;)V",
+      "onHello": "Lnet/minecraft/server/network/ServerLoginPacketListenerImpl;m_5990_(Lnet/minecraft/network/protocol/login/ServerboundHelloPacket;)V",
+      "onKey": "Lnet/minecraft/server/network/ServerLoginPacketListenerImpl;m_8072_(Lnet/minecraft/network/protocol/login/ServerboundKeyPacket;)V"
+    },
+    "dev/msf/friends/mixin/IntegratedServerMixin": {
+      "shouldEnforceSecureProfile": "Lnet/minecraft/server/MinecraftServer;m_214005_()Z",
+      "shutdown": "Lnet/minecraft/server/MinecraftServer;m_7041_()V"
+    },
+    "dev/msf/friends/mixin/OnlineOptionsScreenMixin": {
+      "initFooter()V": "Lnet/minecraft/client/gui/screens/SimpleOptionsSubScreen;m_7853_()V",
+      "render(Lnet/minecraft/client/gui/DrawContext;IIF)V": "Lnet/minecraft/client/gui/screens/SimpleOptionsSubScreen;m_88315_(Lnet/minecraft/client/gui/GuiGraphics;IIF)V"
+    },
+    "dev/msf/friends/mixin/GuestConnectionMixin": {
+      "disconnect": "Lnet/minecraft/client/Minecraft;m_91399_()V"
+    },
+    "dev/msf/friends/mixin/KeyBindingMixin": {
+      "tick": "Lnet/minecraft/client/Minecraft;m_91398_()V"
+    },
+    "dev/msf/friends/mixin/ShareToLanScreenMixin": {
+      "init": "Lnet/minecraft/client/gui/screens/ShareToLanScreen;m_7856_()V"
+    },
+    "dev/msf/friends/mixin/PauseScreenMixin": {
+      "Lnet/minecraft/server/integrated/IntegratedServer;isRemote()Z": "Lnet/minecraft/client/server/IntegratedServer;m_6992_()Z",
+      "initWidgets": "Lnet/minecraft/client/gui/screens/PauseScreen;m_96338_()V"
+    },
+    "dev/msf/friends/mixin/accessor/SimpleOptionsScreenAccessor": {
+      "buttonList": "f_96668_:Lnet/minecraft/client/gui/components/OptionsList;"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "dev/msf/friends/mixin/TitleScreenMixin": {
+        "init": "Lnet/minecraft/client/gui/screens/TitleScreen;m_7856_()V"
+      },
+      "dev/msf/friends/mixin/ClientPacketListenerMixin": {
+        "onGameJoin": "Lnet/minecraft/client/multiplayer/ClientPacketListener;m_5998_(Lnet/minecraft/network/protocol/game/ClientboundLoginPacket;)V"
+      },
+      "dev/msf/friends/mixin/MinecraftTitleMixin": {
+        "getWindowTitle": "Lnet/minecraft/client/Minecraft;m_91270_()Ljava/lang/String;"
+      },
+      "dev/msf/friends/mixin/ConnectionAccessor": {
+        "channel": "f_129468_:Lio/netty/channel/Channel;"
+      },
+      "dev/msf/friends/mixin/ServerLoginMixin": {
+        "Lnet/minecraft/network/ClientConnection;setupEncryption(Ljavax/crypto/Cipher;Ljavax/crypto/Cipher;)V": "Lnet/minecraft/network/Connection;m_129495_(Ljavax/crypto/Cipher;Ljavax/crypto/Cipher;)V",
+        "onHello": "Lnet/minecraft/server/network/ServerLoginPacketListenerImpl;m_5990_(Lnet/minecraft/network/protocol/login/ServerboundHelloPacket;)V",
+        "onKey": "Lnet/minecraft/server/network/ServerLoginPacketListenerImpl;m_8072_(Lnet/minecraft/network/protocol/login/ServerboundKeyPacket;)V"
+      },
+      "dev/msf/friends/mixin/IntegratedServerMixin": {
+        "shouldEnforceSecureProfile": "Lnet/minecraft/server/MinecraftServer;m_214005_()Z",
+        "shutdown": "Lnet/minecraft/server/MinecraftServer;m_7041_()V"
+      },
+      "dev/msf/friends/mixin/OnlineOptionsScreenMixin": {
+        "initFooter()V": "Lnet/minecraft/client/gui/screens/SimpleOptionsSubScreen;m_7853_()V",
+        "render(Lnet/minecraft/client/gui/DrawContext;IIF)V": "Lnet/minecraft/client/gui/screens/SimpleOptionsSubScreen;m_88315_(Lnet/minecraft/client/gui/GuiGraphics;IIF)V"
+      },
+      "dev/msf/friends/mixin/GuestConnectionMixin": {
+        "disconnect": "Lnet/minecraft/client/Minecraft;m_91399_()V"
+      },
+      "dev/msf/friends/mixin/KeyBindingMixin": {
+        "tick": "Lnet/minecraft/client/Minecraft;m_91398_()V"
+      },
+      "dev/msf/friends/mixin/ShareToLanScreenMixin": {
+        "init": "Lnet/minecraft/client/gui/screens/ShareToLanScreen;m_7856_()V"
+      },
+      "dev/msf/friends/mixin/PauseScreenMixin": {
+        "Lnet/minecraft/server/integrated/IntegratedServer;isRemote()Z": "Lnet/minecraft/client/server/IntegratedServer;m_6992_()Z",
+        "initWidgets": "Lnet/minecraft/client/gui/screens/PauseScreen;m_96338_()V"
+      },
+      "dev/msf
+...

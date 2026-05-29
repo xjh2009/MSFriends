@@ -1,0 +1,8 @@
+
+> This mapping 'stable_22' exists only for MC 1.8.9!
+Caused by: net.minecraftforge.gradle.GradleConfigurationException: This mapping 'stable_22' exists only for MC 1.8.9!
+	at net.minecraftforge.gradle.common.BaseExtension.checkMappings(BaseExtension.java:174)
+	at net.minecraftforge.gradle.common.BaseExtension.setMappings(BaseExtension.java:133)
+	at net.minecraftforge.gradle.user.UserExtension.setMappings(UserExtension.java:54)
+	at net.minecraftforge.gradle.user.patch.UserPatchExtension_Decorated.setMappings(Unknown Source)
+

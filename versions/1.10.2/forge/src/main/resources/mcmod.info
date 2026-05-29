@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "msf_friends",
+    "name": "MSF Friends",
+    "description": "MSF Friends - Multiplayer friend list and P2P connections for Minecraft.",
+    "version": "${version}",
+    "mcversion": "1.10.2",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["MSF Team"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

@@ -1,0 +1,5 @@
+forge
+maven
+mcp
+minecraft_tasks
+OpenJDK8U-jdk_x64_windows_hotspot_8u492b09

@@ -32,6 +32,8 @@ subprojects {
         val javaVersion = when {
             project.path.contains("1.16.5") || project.path.contains("1.18.2") || project.path.contains("1.19.2") || project.path.contains("1.20.1") || project.path == ":common" -> 17
             project.path.contains("1.21.") -> 21
+            project.path.contains("1.13.") || project.path.contains("1.14.") || project.path.contains("1.15.") || project.path.contains("1.17.") -> 17
+            project.path.contains("1.7.") || project.path.contains("1.8.") || project.path.contains("1.9.") || project.path.contains("1.10.") || project.path.contains("1.11.") || project.path.contains("1.12.") -> 17
             else -> 25
         }
         toolchain.languageVersion = JavaLanguageVersion.of(javaVersion)
@@ -41,6 +43,8 @@ subprojects {
         val javaVersion = when {
             project.path.contains("1.16.5") || project.path.contains("1.18.2") || project.path.contains("1.19.2") || project.path.contains("1.20.1") || project.path == ":common" -> 17
             project.path.contains("1.21.") -> 21
+            project.path.contains("1.13.") || project.path.contains("1.14.") || project.path.contains("1.15.") || project.path.contains("1.17.") -> 17
+            project.path.contains("1.7.") || project.path.contains("1.8.") || project.path.contains("1.9.") || project.path.contains("1.10.") || project.path.contains("1.11.") || project.path.contains("1.12.") -> 17
             else -> 25
         }
         options.encoding = "UTF-8"

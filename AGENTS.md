@@ -1,0 +1,1 @@
+在你认为编写完Minecraft Mod后需要进行代码的编译编译成功后 使用MCP尝试在Minecraft运行并检查日志 如果日志没有问题没有报错后才算真正结束 C:\Users\xjh37\AppData\Roaming\.minecraft 文件夹存在大部分你需要的客户端 你只需要把他的反编译回到当前目录的任意文件夹分析即可

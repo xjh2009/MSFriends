@@ -1,0 +1,14 @@
+[{
+    "modid": "msf_friends",
+    "name": "Minecraft Service Friends",
+    "description": "WebRTC-based friends system for Minecraft Forge 1.11.2",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["MSF"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+}]

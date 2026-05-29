@@ -1,0 +1,6 @@
+Exists: True
+Size: 399670
+dev/msf/friends/mixin/ClientLoginMixin.class: 1529 bytes
+First 4 bytes: ca fe ba be
+CP count: 2560
+  Unknown tag 2 at pos 12

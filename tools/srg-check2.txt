@@ -1,0 +1,8 @@
+﻿1.18.2-20220404.173914: C:\Users\xjh37\.gradle\caches\minecraftforge\forgegradle\mavenizer\caches\mcp\de\oceanlabs\mcp\mcp_config\1.18.2-20220404.173914\client\data\mappings\joined.tsrg (4755548 bytes)
+1.19.2-20220805.130853: C:\Users\xjh37\.gradle\caches\minecraftforge\forgegradle\mavenizer\caches\mcp\de\oceanlabs\mcp\mcp_config\1.19.2-20220805.130853\client\data\mappings\joined.tsrg (5111528 bytes)
+1.21.1-20240808.132146: C:\Users\xjh37\.gradle\caches\minecraftforge\forgegradle\mavenizer\caches\mcp\de\oceanlabs\mcp\mcp_config\1.21.1-20240808.132146\client\data\mappings\joined.tsrg (6485971 bytes)
+1.21.11-20251223.124241: C:\Users\xjh37\.gradle\caches\minecraftforge\forgegradle\mavenizer\caches\mcp\de\oceanlabs\mcp\mcp_config\1.21.11-20251223.124241\client\data\mappings\joined.tsrg (7896980 bytes)
+26.1.2-20260409.101008: no joined.tsrg
+1.19.2 mappings dir exists: True
+  joined.tsrg (5111528 bytes)
+  joined.tsrg.cache (45 bytes)

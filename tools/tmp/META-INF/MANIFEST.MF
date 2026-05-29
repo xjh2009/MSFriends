@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+
+Name: net/minecraftforge/fml/loading/
+Specification-Title: FMLLoader
+Specification-Vendor: Forge Development LLC
+Specification-Version: 1
+Implementation-Title: FML Loader
+Implementation-Version: 1.0
+Implementation-Vendor: Forge
+
+Name: /
+Timestamp: 2021-12-10T09:47:57+0000
+Git-Commit: 50b54140
+Git-Branch: 1.17.x
+Build-Number: 122
+

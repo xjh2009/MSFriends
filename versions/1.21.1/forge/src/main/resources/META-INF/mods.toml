@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[52,)"
+license="MPL-2.0"
+
+[[mods]]
+modId="msf_friends"
+version="${version}"
+displayName="Minecraft Service Friends (MSF)"
+logoFile=""
+credits="MSF"
+authors="MSF"
+description=''''Minecraft Service Friends (MSF) — Friends + WebRTC P2P multiplayer.''''
+
+# Declare that this mod contains its own authlib classes
+[[jarJar.pin]]
+jar="com.mojang:authlib"
+version="[7.0.63,)"
+
+[[dependencies.msf_friends]]
+    modId="forge"
+    mandatory=true
+    versionRange="[52,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.msf_friends]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.21.1,)"
+    ordering="NONE"
+    side="CLIENT"

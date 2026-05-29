@@ -1,0 +1,3 @@
+// Standalone build for MSF Friends Forge 1.11.2
+// Uses ForgeGradle 2.3 + Gradle 4.10.3
+rootProject.name = 'MSF-Forge-1.11.2'

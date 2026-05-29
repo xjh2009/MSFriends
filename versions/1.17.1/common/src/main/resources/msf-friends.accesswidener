@@ -1,0 +1,4 @@
+accessWidener v2 named
+
+accessible field net/minecraft/client/option/KeyBinding CATEGORY_ORDER_MAP Ljava/util/Map;
+accessible field net/minecraft/client/option/KeyBinding KEY_CATEGORIES Ljava/util/Set;

@@ -1,0 +1,16 @@
+﻿Path exists: True
+Dir: 1.18.2-20220404.173914
+Dir: 1.19.2-20220805.130853
+Dir: 1.21.1-20240808.132146
+Dir: 1.21.11-20251223.124241
+Dir: 26.1.2-20260409.101008
+Found: C:\Users\xjh37\.gradle\caches\minecraftforge\forgegradle\mavenizer\caches\mcp\de\oceanlabs\mcp\mcp_config\1.18.2-20220404.173914\client\data\mappings\joined.tsrg
+Size: 4755548
+  tsrg2 obf srg id
+  a net/minecraft/src/C_140945_ 140945
+  	a f_142767_ 142767
+  	b f_142768_ 142768
+  	c f_142769_ 142769
+  	d f_142770_ 142770
+  	<init> ()V <init> 142771
+  aa net/minecraft/src/C_5250_ 5250

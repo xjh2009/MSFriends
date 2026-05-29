@@ -1,0 +1,86 @@
+plugins {
+    alias(libs.plugins.forge.gradle)
+}
+
+description = "MSF Forge 1.15.2 entry point"
+
+minecraft {
+    mappings("snapshot", "20200514-1.15.1")
+    useDefaultAccessTransformer()
+}
+
+configurations.configureEach {
+    resolutionStrategy {
+        force("org.apache.logging.log4j:log4j-api:2.11.2")
+        force("org.apache.logging.log4j:log4j-core:2.11.2")
+    }
+}
+
+dependencies {
+    implementation(project(":common"))
+
+    implementation(minecraft.dependency("net.minecraftforge:forge:1.15.2-31.2.57"))
+
+    // The mavenizer module metadata requires mapping attributes that compileClasspath
+    // doesn't provide. Add the remapped jar as a file dependency so MC classes are
+    // on the compile classpath even when the variant resolution fails.
+    val forgeMavenizerRepo = rootProject.layout.projectDirectory.dir(".gradle/mavenizer/repo")
+    val forgeJar = forgeMavenizerRepo.file("net/minecraftforge/forge/1.15.2-31.2.57/forge-1.15.2-31.2.57.jar")
+    if (forgeJar.asFile.exists()) {
+        implementation(files(forgeJar))
+    }
+
+    // Sponge Mixin — provided at runtime by Forge/FML but needed at compile time
+    // for mixin annotations (@Mixin, @Inject, @Shadow, etc.)
+    implementation("org.spongepowered:mixin:0.8.5")
+
+    implementation(libs.webrtc.java)
+}
+
+tasks.register("showCompileClasspath") {
+    doLast {
+        configurations.named("compileClasspath").get().files.forEach { f ->
+            println("  CP: $f (${f.length()} bytes)")
+        }
+    }
+}
+
+tasks.named<ProcessResources>("processResources") {
+    inputs.property("version", project.version)
+    val safeVersion = project.version.toString().replace("+", "-")
+    filesMatching("META-INF/mods.toml") { expand("version" to safeVersion) }
+}
+
+val forgeManifestAttrs = mapOf(
+    "Specification-Title" to "MSF-forge-1.15.2",
+    "Specification-Version" to project.version,
+    "Implementation-Title" to "MSF-forge-1.15.2",
+    "Implementation-Version" to project.version,
+    "MixinConfigs" to "msf-friends.mixins.json",
+    "FMLModType" to "GAMELIBRARY"
+)
+
+tasks.named<Jar>("jar") {
+    manifest { attributes(forgeManifestAttrs) }
+}
+
+tasks.register<Jar>("fatJar") {
+    group = "build"
+    description = "Assembles a deployable fat jar containing all module classes"
+    archiveClassifier.set("all")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest { attributes(forgeManifestAttrs) }
+    from(sourceSets.main.get().output)
+    val commonJar = project(":common").tasks.named<Jar>("jar")
+    dependsOn(commonJar)
+    from(commonJar.map { zipTree(it.archiveFile) }) { exclude("META-INF/MANIFEST.MF") }
+
+    from({ configurations.runtimeClasspath.get().filter { it.name.contains("webrtc-java") }.map { zipTree(it) } }) {
+        exclude("META-INF/MANIFEST.MF", "module-info.class")
+    }
+
+    // Exclude base Minecraft classes (provided by the MC runtime)
+    exclude("net/minecraft/**")
+}
+
+tasks.named("assemble") { dependsOn("fatJar") }

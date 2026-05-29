@@ -1,0 +1,7 @@
+[{
+  "modid": "testmod",
+  "name": "Test Mod",
+  "description": "Test",
+  "version": "1.0",
+  "mcversion": "1.11.2"
+}]

@@ -1,0 +1,8 @@
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\FriendsEventHandler.java
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\FriendsScreen1112.java
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\MsfFriendsBoot1112.java
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\MsfFriendsForge.java
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\MsfFriendsKeyBindings1112.java
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\bridge\HeadlessMinecraftBridge1112.java
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\bridge\MinecraftBridge1112.java
+C:\Users\xjh37\Desktop\MSF\msf-friends-multi\versions\1.11.2\forge\src\main\java\dev\msf\friends\util\Logging1112.java

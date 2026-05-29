@@ -1,0 +1,38 @@
+{
+  "required": true,
+  "package": "dev.msf.friends.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "versions-1.17.1-common-refmap.json",
+  "mixins": [
+    "ClientLoginMixin",
+    "ClientPacketListenerMixin",
+    "ConnectionAccessor",
+    "GuestConnectionMixin",
+    "IntegratedServerMixin",
+    "KeyBindingMixin",
+    "MinecraftTitleMixin",
+    "OptionsMixin",
+    "PauseScreenMixin",
+    "ServerLoginMixin",
+    "ShareToLanScreenMixin",
+    "TitleScreenMixin"
+  ],
+  "client": [
+    "ClientLoginMixin",
+    "ClientPacketListenerMixin",
+    "ConnectionAccessor",
+    "GuestConnectionMixin",
+    "IntegratedServerMixin",
+    "KeyBindingMixin",
+    "MinecraftTitleMixin",
+    "OptionsMixin",
+    "PauseScreenMixin",
+    "ServerLoginMixin",
+    "ShareToLanScreenMixin",
+    "TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

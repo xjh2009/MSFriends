@@ -1,0 +1,56 @@
+plugins {
+    alias(libs.plugins.forge.gradle)
+}
+
+description = "MSF Forge 1.17.1 entry point"
+
+minecraft {
+    // useDefaultAccessTransformer()  // disabled: mavenizer AT failure
+}
+
+// Pin dynamic versions used by Forge 1.17.1 FML transitive deps to avoid
+// resolution failures when maven.neoforged.net is unreachable.
+configurations.configureEach {
+    resolutionStrategy.eachDependency {
+        when {
+            requested.group == "cpw.mods" && requested.name == "modlauncher" -> useVersion("9.0.7")
+            requested.group == "net.minecraftforge" && requested.name == "forgespi" -> useVersion("4.0.10")
+            requested.group == "net.minecraftforge" && requested.name == "coremods" -> useVersion("5.0.1")
+            requested.group == "net.minecraftforge" && requested.name == "eventbus" -> useVersion("5.0.7")
+            requested.group == "org.apache.logging.log4j" && requested.name == "log4j-api" -> useVersion("2.17.0")
+            requested.group == "org.apache.logging.log4j" && requested.name == "log4j-core" -> useVersion("2.17.0")
+        }
+    }
+}
+
+dependencies {
+    implementation(project(":versions:1.17.1:common"))
+    implementation(minecraft.dependency("net.minecraftforge:forge:1.17.1-37.1.1"))
+
+    // Forge splits its runtime into multiple artifacts.  The mavenizer
+    // output for the `forge` jar does **not** contain @Mod or FMLPaths, so we
+    // must pull the satellite libraries explicitly.
+    implementation("net.minecraftforge:javafmllanguage:1.17.1-37.1.1")
+    implementation("net.minecraftforge:fmlloader:1.17.1-37.1.1")
+    implementation("net.minecraftforge:fmlcore:1.17.1-37.1.1")
+
+    implementation(libs.webrtc.java)
+}
+
+tasks.named<ProcessResources>("processResources") {
+    inputs.property("version", project.version)
+    filesMatching("META-INF/mods.toml") { expand("version" to project.version) }
+}
+
+val forgeManifestAttrs = mapOf(
+    "Specification-Title" to "MSF-forge-1.17.1",
+    "Specification-Version" to project.version,
+    "Implementation-Title" to "MSF-forge-1.17.1",
+    "Implementation-Version" to project.version,
+    "MixinConfigs" to "msf-friends.mixins.json",
+    "FMLModType" to "MOD"
+)
+
+tasks.named<Jar>("jar") {
+    manifest { attributes(forgeManifestAttrs) }
+}

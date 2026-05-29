@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+license="MPL-2.0"
+
+[[mods]]
+modId="msf_friends"
+version="${version}"
+displayName="Minecraft Service Friends (MSF)"
+logoFile=""
+credits="MSF"
+authors="MSF"
+description="Minecraft Service Friends (MSF) — Friends + WebRTC P2P multiplayer."
+
+[[dependencies.msf_friends]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.msf_friends]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4,)"
+    ordering="NONE"
+    side="CLIENT"

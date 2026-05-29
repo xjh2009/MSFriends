@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "msf_friends",
+    "name": "MSF Friends",
+    "description": "P2P Friends system for Minecraft 1.8.9",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "authorList": ["MSF"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

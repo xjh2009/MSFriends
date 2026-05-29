@@ -1,0 +1,15 @@
+{
+  "screen.msf_friends.friends.title": "Friends",
+  "screen.msf_friends.friends.tab.friends": "Friends",
+  "screen.msf_friends.friends.tab.pending": "Pending",
+  "screen.msf_friends.friends.button.add": "Add",
+  "screen.msf_friends.friends.empty.friends": "No friends yet",
+  "screen.msf_friends.friends.empty.pending": "No pending requests",
+  "screen.msf_friends.friends.empty.filter": "No matches",
+  "button.msf_friends.friends": "Friends",
+  "key.msf_friends.open_friends": "Open Friends",
+  "msf_friends.toast.friend_online": "%s is now online",
+  "msf_friends.toast.friend_offline": "%s is now offline",
+  "msf_friends.toast.join_request": "%s wants to join",
+  "msf_friends.toast.invite_received": "%s invited you to join"
+}

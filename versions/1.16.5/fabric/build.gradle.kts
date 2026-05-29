@@ -33,6 +33,7 @@ val commonJar = project(":common").tasks.named<Jar>("jar")
 val verCommonJar = project(":versions:1.16.5:common").tasks.named<Jar>("jar")
 
 tasks.named<Jar>("jar") {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     dependsOn(commonJar, verCommonJar)
     from(commonJar.map { zipTree(it.archiveFile) }) { exclude("META-INF/MANIFEST.MF") }
     from(verCommonJar.map { zipTree(it.archiveFile) }) { exclude("META-INF/MANIFEST.MF") }

@@ -1,0 +1,34 @@
+﻿T=0 : tsrg2 obf srg id
+T=0 : a net/minecraft/src/C_140945_ 140945
+T=1 : 	a f_142767_ 142767
+T=1 : 	b f_142768_ 142768
+T=1 : 	c f_142769_ 142769
+T=1 : 	d f_142770_ 142770
+T=1 : 	<init> ()V <init> 142771
+T=0 : aa net/minecraft/src/C_5250_ 5250
+T=1 : 	<init> (Ljava/lang/String;)V <init> 135420
+T=2 : 		0 o p_135421_ 135421
+T=1 : 	<init> (Ljava/lang/String;Ljava/lang/Throwable;)V <init> 135422
+T=2 : 		0 o p_135423_ 135423
+T=2 : 		1 o p_135424_ 135424
+T=0 : aaa net/minecraft/src/C_141884_ 141884
+T=0 : aab net/minecraft/src/C_5213_ 5213
+T=1 : 	a (Laad;)V m_6440_ 6440
+T=2 : 		0 o p_134872_ 134872
+T=1 : 	a (Laac;)V m_7017_ 7017
+T=2 : 		0 o p_134871_ 134871
+T=0 : aac net/minecraft/src/C_5214_ 5214
+T=1 : 	a f_134873_ 134873
+T=1 : 	<init> (Lqx;)V <init> 179830
+T=2 : 		0 o p_179831_ 179831
+T=1 : 	<init> (J)V <init> 134875
+T=2 : 		0 o p_134876_ 134876
+
+=== Count by indentation ===
+T=0 (class lines): 6859
+T=1 (member lines): 88604
+T=2 (param lines): 98124
+
+=== Sample method lines (T=1, starts with desc) ===
+
+=== Sample field lines (T=1, no desc) ===

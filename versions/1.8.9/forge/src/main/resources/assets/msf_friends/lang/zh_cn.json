@@ -1,0 +1,15 @@
+{
+  "screen.msf_friends.friends.title": "好友",
+  "screen.msf_friends.friends.tab.friends": "好友",
+  "screen.msf_friends.friends.tab.pending": "待处理",
+  "screen.msf_friends.friends.button.add": "添加",
+  "screen.msf_friends.friends.empty.friends": "暂无好友",
+  "screen.msf_friends.friends.empty.pending": "暂无待处理请求",
+  "screen.msf_friends.friends.empty.filter": "无匹配结果",
+  "button.msf_friends.friends": "好友",
+  "key.msf_friends.open_friends": "打开好友列表",
+  "msf_friends.toast.friend_online": "%s 上线了",
+  "msf_friends.toast.friend_offline": "%s 下线了",
+  "msf_friends.toast.join_request": "%s 想要加入",
+  "msf_friends.toast.invite_received": "%s 邀请你加入"
+}

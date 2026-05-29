@@ -1,0 +1,14 @@
+[{
+  "modid": "msf_friends",
+  "name": "Minecraft Service Friends (MSF)",
+  "description": "Minecraft Service Friends (MSF) — Friends + WebRTC P2P multiplayer for 1.7.10.",
+  "version": "${modVersion}",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["MSF"],
+  "credits": "MSF",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}]
